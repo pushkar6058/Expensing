@@ -1,7 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Users, User, Plane, Calendar } from 'lucide-react';
 import TripsHeader from '../../trips/components/TripsHeader';
+import { logout } from '../../auth/store/userSlice';
+import toast from 'react-hot-toast';
+
+const API_BASE = 'http://localhost:3000/api';
 
 const options = [
   {
@@ -43,6 +47,7 @@ const options = [
 
 export default function HomePage() {
   const hour = new Date().getHours();
+  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
 
   const handleLogout = async () => {
@@ -51,7 +56,9 @@ export default function HomePage() {
           method: 'POST',
           credentials: 'include',
         });
-      } catch {}
+      } catch {
+        // ignore
+      }
       dispatch(logout());
       toast.success('Logged out successfully');
     };

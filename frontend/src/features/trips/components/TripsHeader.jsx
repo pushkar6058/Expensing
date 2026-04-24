@@ -17,7 +17,9 @@ export default function TripsHeader() {
         method: 'POST',
         credentials: 'include',
       });
-    } catch {}
+    } catch {
+      // ignore
+    }
     dispatch(logout());
     toast.success('Logged out successfully');
   };

@@ -3,7 +3,6 @@ import {
   openCreateModal,
   closeCreateModal,
   setFilter,
-  fetchTrips,
   fetchExpenses,
   createTrip,
   addExpense,

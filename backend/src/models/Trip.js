@@ -11,14 +11,23 @@ const tripSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    startDate: {
+      type: String,
+      default: null,
+    },
+    endDate: {
+      type: String,
+      default: null,
+    },
     tag1: {
       type: String,
       trim: true,
       default: null,
     },
-    people: {
-      type: String,
-      required: true,
+    members: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'User',
+      default: [],
     },
     spent: {
       type: Number,

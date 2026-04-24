@@ -12,6 +12,11 @@ const expenseSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+    },
     amount: {
       type: Number,
       required: true,

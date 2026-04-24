@@ -1,8 +1,31 @@
-import { useContext } from 'react';
-import TripsContext from './TripsContext';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  openCreateModal,
+  closeCreateModal,
+  setFilter,
+  fetchTrips,
+  fetchExpenses,
+  createTrip,
+  addExpense,
+  removeExpense,
+} from './tripsSlice';
 
-export default function useTripsStore() {
-  const store = useContext(TripsContext);
-  if (!store) throw new Error('useTripsStore must be used within <TripsProvider />');
-  return store;
+export function useTripsStore() {
+  const dispatch = useDispatch();
+
+  return {
+    openCreateModal: () => dispatch(openCreateModal()),
+    closeCreateModal: () => dispatch(closeCreateModal()),
+    setFilter: (filter) => dispatch(setFilter(filter)),
+    handleCreateTrip: (trip) => dispatch(createTrip(trip)),
+    loadExpenses: (tripId) => dispatch(fetchExpenses(tripId)),
+    addExpense: (tripId, expenseInput) =>
+      dispatch(addExpense({ tripId, expenseInput })),
+    removeExpense: (tripId, expenseId) =>
+      dispatch(removeExpense({ tripId, expenseId })),
+  };
+}
+
+export function useTripsSelector(selector) {
+  return useSelector(selector);
 }

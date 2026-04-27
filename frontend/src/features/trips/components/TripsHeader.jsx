@@ -4,7 +4,7 @@ import { logout } from '../../auth/store/userSlice';
 import { openCreateModal } from '../store/tripsSlice';
 import toast from 'react-hot-toast';
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 export default function TripsHeader() {
   const dispatch = useDispatch();

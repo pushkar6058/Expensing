@@ -5,7 +5,7 @@ import TripsHeader from '../../trips/components/TripsHeader';
 import { logout } from '../../auth/store/userSlice';
 import toast from 'react-hot-toast';
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 const options = [
   {

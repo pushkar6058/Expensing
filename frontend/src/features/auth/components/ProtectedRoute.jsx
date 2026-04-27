@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 import { authCheckFailed, authCheckStarted, authCheckSucceeded } from '../store/userSlice';
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 export default function ProtectedRoute() {
   const dispatch = useDispatch();

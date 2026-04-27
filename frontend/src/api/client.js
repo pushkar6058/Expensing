@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 async function fetchJSON(url, options = {}) {
   const response = await fetch(url, {

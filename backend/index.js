@@ -12,10 +12,18 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://expensing-wi2t.vercel.app"
-  ],
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      process.env.FRONTEND_URL,
+      "http://localhost:5173",
+      "https://expensing-wi2t.vercel.app"
+    ].filter(Boolean);
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ["GET","POST","PUT","DELETE"],
   credentials: true
 }));

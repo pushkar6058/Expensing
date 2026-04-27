@@ -22,11 +22,11 @@ const userRegisterController=async(req,res)=>{
 
         const user=await User.create({name,email,password});
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:"1h"});
-        res.cookie("token",token,{
-          httpOnly:true,
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-          maxAge:60*60*1000
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "None",
+            maxAge: 60 * 60 * 1000
         });
 
         return res.status(201).json({message:"User registered successfully",user: toSafeUser(user)});
@@ -62,11 +62,11 @@ const userLoginController=async(req,res)=>{
             return res.status(401).json({message:"Invalid password"});
         }
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:"1h"});
-        res.cookie("token",token,{
-          httpOnly:true,
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-          maxAge:60*60*1000
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "None",
+            maxAge: 60 * 60 * 1000
         });
         return res.status(200).json({message:"User logged in successfully",user: toSafeUser(user)});
     } catch (error) {
@@ -93,21 +93,13 @@ export const getCurrentUser = async (req, res) => {
 
     res.json(user);
   } catch (error) {
-    res.clearCookie('token', {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-    });
+    res.clearCookie('token');
     return res.status(401).json({ message: 'Invalid token' });
   }
 };
 
 export const logoutUser = (req, res) => {
-  res.clearCookie('token', {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-    });
+  res.clearCookie('token');
   return res.status(200).json({ message: 'Logged out successfully' });
 };
 

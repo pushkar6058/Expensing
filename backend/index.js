@@ -10,20 +10,13 @@ import userRouter from './src/routes/user.js';
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: (origin, callback) => {
-    const allowedOrigins = [
-      process.env.FRONTEND_URL,
-      "http://localhost:5173",
-      "https://expensing-wi2t.vercel.app"
-    ].filter(Boolean);
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: [
+    "http://localhost:5173",
+    "https://expensing-wi2t.vercel.app"
+  ],
   methods: ["GET","POST","PUT","DELETE"],
   credentials: true
 }));
@@ -37,6 +30,5 @@ app.use('/api/auth', userRouter);
 app.use('/api/trips', tripsRouter);
 app.use('/api/expenses', expensesRouter);
 
-app.listen(process.env.PORT, () => {
-  console.log('Server is running on port', process.env.PORT);
-});
+app.listen(PORT, () => console.log(`Running on ${PORT}`));
+

@@ -11,11 +11,10 @@ function toSafeUser(user) {
 
 // Cookie configuration for cross-origin authentication
 const getCookieOptions = () => ({
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
-    maxAge: 60 * 60 * 1000, // 1 hour
-    path: '/'
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  path: '/',
 });
 
 const userRegisterController=async(req,res)=>{
@@ -33,7 +32,10 @@ const userRegisterController=async(req,res)=>{
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:"1h"});
         
         // Set cookie with production-ready configuration
-        res.cookie("token", token, getCookieOptions());
+        res.cookie("token", token, {
+            ...getCookieOptions(),
+            maxAge: 60 * 60 * 1000
+            });
 
         return res.status(201).json({message:"User registered successfully",user: toSafeUser(user)});
 
@@ -70,7 +72,10 @@ const userLoginController=async(req,res)=>{
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:"1h"});
         
         // Set cookie with production-ready configuration
-        res.cookie("token", token, getCookieOptions());
+        res.cookie("token", token, {
+        ...getCookieOptions(),
+        maxAge: 60 * 60 * 1000
+        });
         
         return res.status(200).json({message:"User logged in successfully",user: toSafeUser(user)});
     } catch (error) {
@@ -98,13 +103,23 @@ export const getCurrentUser = async (req, res) => {
     res.json(user);
   } catch (error) {
     console.log(error);
-    res.clearCookie('token');
+        res.clearCookie("token", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "None",
+            path: '/'
+        });
     return res.status(401).json({ message: 'Invalid token' });
   }
 };
 
 export const logoutUser = (req, res) => {
-  res.clearCookie('token', getCookieOptions());
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+    path: '/'
+});
   return res.status(200).json({ message: 'Logged out successfully' });
 };
 

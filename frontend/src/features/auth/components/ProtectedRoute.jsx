@@ -15,7 +15,9 @@ export default function ProtectedRoute() {
     dispatch(authCheckStarted());
 
     fetch(`${API_BASE}/auth/me`, {
+      method: "GET",
       credentials: 'include',
+
     })
       .then((res) => {
         if (!res.ok) throw new Error('Not authenticated');

@@ -93,6 +93,7 @@ export const getCurrentUser = async (req, res) => {
 
     res.json(user);
   } catch (error) {
+    console.log(error);
     res.clearCookie('token');
     return res.status(401).json({ message: 'Invalid token' });
   }

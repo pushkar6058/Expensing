@@ -3,6 +3,7 @@ import User from '../models/User.js';
 
 export async function getAuthenticatedUser(req) {
   const token = req.cookies?.token;
+  // console.log(token, "user is authenticated");
   if (!token) return null;
 
   try {

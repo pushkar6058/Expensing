@@ -26,9 +26,18 @@ app.use(cookieParser());
 
 connectDB();
 
+// Health check endpoint to prevent Render cold starts
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
+// API routes
 app.use('/api/auth', userRouter);
 app.use('/api/trips', tripsRouter);
 app.use('/api/expenses', expensesRouter);
 
 app.listen(PORT, () => console.log(`Running on ${PORT}`));
-

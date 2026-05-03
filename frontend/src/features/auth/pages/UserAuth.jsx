@@ -72,23 +72,23 @@ export default function UserAuth() {
   }
 
   return (
-    <div className='min-h-screen bg-black flex items-center justify-center p-4'>
+    <div className='min-h-screen dark:bg-black bg-white flex items-center justify-center p-4'>
       <div className='w-full max-w-md'>
         <div className='text-center mb-10'>
-          <h1 className='text-5xl font-bold text-emerald-400'>Expense Tracker</h1>
-          <p className='text-zinc-400 mt-3 text-lg'>Track your trips and expenses effortlessly</p>
+          <h1 className='text-3xl font-bold text-emerald-500'>Expensing</h1>
+          <p className='dark:text-zinc-400 text-gray-500 mt-3 text-base'>Track your trips and expenses effortlessly</p>
         </div>
 
-        <div className='bg-zinc-900 border border-zinc-700 rounded-3xl p-8'>
-          <div className='flex bg-zinc-800 rounded-2xl p-1 mb-8'>
+        <div className='dark:bg-zinc-900 bg-white dark:border-zinc-700 border-gray-300 rounded-3xl p-8'>
+          <div className='flex dark:bg-zinc-800 bg-gray-200 rounded-2xl p-1 mb-8'>
             <button
               type='button'
               onClick={() => {
                 setIsLogin(true);
                 dispatch(clearError());
               }}
-              className={`flex-1 py-3 rounded-xl text-lg font-semibold transition-all ${
-                isLogin ? 'bg-emerald-500 text-black' : 'text-zinc-400 hover:text-white'
+              className={`flex-1 py-3 rounded-xl text-base font-semibold transition-all ${
+                isLogin ? 'bg-emerald-500 text-black' : 'dark:text-zinc-400 text-gray-600 dark:hover:text-white hover:text-black'
               }`}
             >
               Sign In
@@ -99,8 +99,8 @@ export default function UserAuth() {
                 setIsLogin(false);
                 dispatch(clearError());
               }}
-              className={`flex-1 py-3 rounded-xl text-lg font-semibold transition-all ${
-                !isLogin ? 'bg-emerald-500 text-black' : 'text-zinc-400 hover:text-white'
+              className={`flex-1 py-3 rounded-xl text-base font-semibold transition-all ${
+                !isLogin ? 'bg-emerald-500 text-black' : 'dark:text-zinc-400 text-gray-600 dark:hover:text-white hover:text-black'
               }`}
             >
               Sign Up
@@ -110,39 +110,39 @@ export default function UserAuth() {
           <form onSubmit={handleSubmit} className='space-y-5'>
             {!isLogin && (
               <div>
-                <label className='block text-zinc-400 mb-2 text-sm'>Name</label>
+                <label className='block dark:text-zinc-400 text-gray-600 mb-2 text-sm'>Name</label>
                 <input
                   type='text'
                   name='name'
                   value={formData.name}
                   onChange={handleChange}
                   placeholder='John Doe'
-                  className='w-full p-4 rounded-2xl bg-zinc-800 border border-zinc-700 focus:border-emerald-500 focus:outline-none text-white placeholder-zinc-500 transition-colors'
+                  className='w-full p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:border-zinc-700 border-gray-300 focus:border-emerald-500 focus:outline-none dark:text-white text-black dark:placeholder-zinc-500 placeholder-gray-400 transition-colors'
                 />
               </div>
             )}
 
             <div>
-              <label className='block text-zinc-400 mb-2 text-sm'>Email</label>
+              <label className='block dark:text-zinc-400 text-gray-600 mb-2 text-sm'>Email</label>
               <input
                 type='email'
                 name='email'
                 value={formData.email}
                 onChange={handleChange}
                 placeholder='you@example.com'
-                className='w-full p-4 rounded-2xl bg-zinc-800 border border-zinc-700 focus:border-emerald-500 focus:outline-none text-white placeholder-zinc-500 transition-colors'
+                className='w-full p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:border-zinc-700 border-gray-300 focus:border-emerald-500 focus:outline-none dark:text-white text-black dark:placeholder-zinc-500 placeholder-gray-400 transition-colors'
               />
             </div>
 
             <div>
-              <label className='block text-zinc-400 mb-2 text-sm'>Password</label>
+              <label className='block dark:text-zinc-400 text-gray-600 mb-2 text-sm'>Password</label>
               <input
                 type='password'
                 name='password'
                 value={formData.password}
                 onChange={handleChange}
                 placeholder='••••••••'
-                className='w-full p-4 rounded-2xl bg-zinc-800 border border-zinc-700 focus:border-emerald-500 focus:outline-none text-white placeholder-zinc-500 transition-colors'
+                className='w-full p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:border-zinc-700 border-gray-300 focus:border-emerald-500 focus:outline-none dark:text-white text-black dark:placeholder-zinc-500 placeholder-gray-400 transition-colors'
               />
             </div>
 
@@ -155,7 +155,7 @@ export default function UserAuth() {
             <button
               type='submit'
               disabled={isLoading}
-              className='w-full p-4 rounded-2xl bg-emerald-500 text-black font-bold text-lg hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
+              className='w-full p-4 rounded-2xl bg-emerald-500 text-black font-bold text-base hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
             >
               {isLoading ? (
                 <span className='flex items-center justify-center gap-2'>
@@ -169,7 +169,7 @@ export default function UserAuth() {
             </button>
           </form>
 
-          <p className='text-zinc-500 text-center mt-6 text-sm'>
+          <p className='dark:text-zinc-500 text-gray-400 text-center mt-6 text-sm'>
             {isLogin ? "Don't have an account? " : 'Already have an account? '}
             <button
               type='button'
@@ -177,7 +177,7 @@ export default function UserAuth() {
                 setIsLogin(!isLogin);
                 dispatch(clearError());
               }}
-              className='text-emerald-400 hover:underline'
+              className='text-emerald-500 hover:underline'
             >
               {isLogin ? 'Sign Up' : 'Sign In'}
             </button>

@@ -29,8 +29,8 @@ export default function ProtectedRoute() {
 
   if (!hasCheckedAuth) {
     return (
-      <div className='min-h-screen bg-black flex items-center justify-center'>
-        <p className='text-2xl text-zinc-400'>Loading...</p>
+      <div className='min-h-screen dark:bg-black bg-white flex items-center justify-center'>
+        <p className='text-2xl dark:text-zinc-400 text-gray-500'>Loading...</p>
       </div>
     );
   }

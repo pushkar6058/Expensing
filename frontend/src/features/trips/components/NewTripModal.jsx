@@ -96,11 +96,11 @@ export default function NewTripModal({ onClose, onCreate, onJoin }) {
   };
 
   return (
-    <div className='fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50'>
-      <div className='w-full max-w-2xl bg-zinc-900 border border-zinc-700 rounded-3xl p-6'>
+    <div className='fixed inset-0 dark:bg-black/70 bg-gray-500/50 flex items-center justify-center p-4 z-50'>
+      <div className='w-full max-w-2xl dark:bg-zinc-900 bg-white dark:border-zinc-700 border-gray-300 rounded-3xl p-6'>
         {mode === 'menu' && (
           <div className='space-y-4'>
-            <h2 className='text-3xl font-bold'>New Trip</h2>
+            <h2 className='text-3xl font-bold dark:text-white text-black'>New Trip</h2>
 
             <button
               onClick={() => setMode('join')}
@@ -118,7 +118,7 @@ export default function NewTripModal({ onClose, onCreate, onJoin }) {
 
             <button
               onClick={onClose}
-              className='w-full p-4 rounded-2xl border border-zinc-600'
+              className='w-full p-4 rounded-2xl border dark:border-zinc-600 border-gray-400 dark:text-white text-black'
             >
               Close
             </button>
@@ -127,20 +127,20 @@ export default function NewTripModal({ onClose, onCreate, onJoin }) {
 
         {mode === 'join' && (
           <div className='space-y-4'>
-            <h2 className='text-3xl font-bold'>Join Trip</h2>
+            <h2 className='text-3xl font-bold dark:text-white text-black'>Join Trip</h2>
 
             <input
               onChange={(event) => setTripId(event.target.value)}
               type='text'
               value={tripId}
               placeholder='Enter Trip Id'
-              className='w-full p-4 rounded-2xl bg-zinc-800'
+              className='w-full p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:text-white text-black border dark:border-zinc-700 border-gray-300'
             />
 
             <div className='flex gap-3'>
               <button
                 onClick={() => setMode('menu')}
-                className='w-full p-4 rounded-2xl border border-zinc-600'
+                className='w-full p-4 rounded-2xl border dark:border-zinc-600 border-gray-400 dark:text-white text-black'
               >
                 Back
               </button>
@@ -159,11 +159,11 @@ export default function NewTripModal({ onClose, onCreate, onJoin }) {
         {mode === 'create' && (
           <>
             <div className='flex justify-between items-center'>
-              <h2 className='text-3xl font-bold'>Create Group Trip</h2>
+              <h2 className='text-3xl font-bold dark:text-white text-black'>Create Group Trip</h2>
 
               <button
                 onClick={() => setMode('menu')}
-                className='text-zinc-400 text-sm uppercase tracking-wide'
+                className='dark:text-zinc-400 text-gray-500 text-sm uppercase tracking-wide'
               >
                 Back
               </button>
@@ -175,7 +175,7 @@ export default function NewTripModal({ onClose, onCreate, onJoin }) {
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                   placeholder='Project Name'
-                  className='w-full p-4 rounded-2xl bg-zinc-800 text-sm sm:text-base'
+                  className='w-full p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:text-white text-black border dark:border-zinc-700 border-gray-300 text-sm sm:text-base'
                 />
 
                 <input
@@ -184,7 +184,7 @@ export default function NewTripModal({ onClose, onCreate, onJoin }) {
                   value={budget}
                   onChange={(event) => setBudget(event.target.value)}
                   placeholder='Budget'
-                  className='w-full p-4 rounded-2xl bg-zinc-800 text-sm sm:text-base'
+                  className='w-full p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:text-white text-black border dark:border-zinc-700 border-gray-300 text-sm sm:text-base'
                 />
 
                 <input
@@ -193,30 +193,30 @@ export default function NewTripModal({ onClose, onCreate, onJoin }) {
                   value={spent}
                   onChange={(event) => setSpent(event.target.value)}
                   placeholder='Spent Amount'
-                  className='w-full p-4 rounded-2xl bg-zinc-800 text-sm sm:text-base'
+                  className='w-full p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:text-white text-black border dark:border-zinc-700 border-gray-300 text-sm sm:text-base'
                 />
 
                 <input
                   type='date'
                   value={startDate}
                   onChange={(event) => setStartDate(event.target.value)}
-                  className='w-full p-4 rounded-2xl bg-zinc-800 text-sm sm:text-base'
+                  className='w-full p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:text-white text-black border dark:border-zinc-700 border-gray-300 text-sm sm:text-base'
                 />
 
                 <input
                   type='date'
                   value={endDate}
                   onChange={(event) => setEndDate(event.target.value)}
-                  className='w-full p-4 rounded-2xl bg-zinc-800 text-sm sm:text-base'
+                  className='w-full p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:text-white text-black border dark:border-zinc-700 border-gray-300 text-sm sm:text-base'
                 />
 
                 {!hasValidDateRange && startDate && endDate && (
                   <p className='text-sm text-orange-400'>Start date must be before or equal to end date.</p>
                 )}
 
-                <div className='rounded-2xl border border-zinc-700 bg-zinc-800 p-4'>
-                  <p className='text-xs uppercase tracking-wide text-zinc-400'>Auto Status</p>
-                  <p className='mt-2 text-lg font-semibold text-white'>{computedStatus}</p>
+                <div className='rounded-2xl border dark:border-zinc-700 border-gray-300 dark:bg-zinc-800 bg-gray-100 p-4'>
+                  <p className='text-xs uppercase tracking-wide dark:text-zinc-400 text-gray-500'>Auto Status</p>
+                  <p className='mt-2 text-lg font-semibold dark:text-white text-black'>{computedStatus}</p>
                 </div>
 
                 <button
@@ -231,7 +231,7 @@ export default function NewTripModal({ onClose, onCreate, onJoin }) {
 
             {step === 2 && (
               <div className='mt-6 space-y-4'>
-                <div className='p-4 rounded-2xl bg-zinc-800'>
+                <div className='p-4 rounded-2xl dark:bg-zinc-800 bg-gray-100 dark:text-white text-black'>
                   Name: {name}
                   <br />
                   Dates: {tripDate}
@@ -246,7 +246,7 @@ export default function NewTripModal({ onClose, onCreate, onJoin }) {
                 <div className='flex gap-3'>
                   <button
                     onClick={() => setStep(1)}
-                    className='w-full p-4 rounded-2xl border border-zinc-600'
+                    className='w-full p-4 rounded-2xl border dark:border-zinc-600 border-gray-400 dark:text-white text-black'
                   >
                     Back
                   </button>

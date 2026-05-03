@@ -32,10 +32,10 @@ export default function GroupTripsPage() {
   const averageSpent = tripList.length ? totalSpent / tripList.length : 0;
 
   return (
-    <div className='min-h-screen bg-black text-white px-4 py-6 sm:px-8 md:px-10 md:py-10 overflow-x-hidden'>
+    <div className='min-h-screen dark:bg-black bg-white dark:text-white text-black px-4 py-6 sm:px-8 md:px-10 md:py-10 overflow-x-hidden'>
       <Link
         to='/'
-        className='inline-flex items-center text-sm sm:text-lg text-emerald-400 hover:underline mb-5 sm:mb-6'
+        className='inline-flex items-center text-sm sm:text-lg text-emerald-500 hover:underline mb-5 sm:mb-6'
       >
         Back to dashboard
       </Link>

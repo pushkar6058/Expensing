@@ -25,16 +25,16 @@ export default function TripsHeader() {
   };
 
   return (
-    <div className='flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between border-b border-zinc-700 pb-6 sm:pb-8'>
+    <div className='flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between border-b dark:border-zinc-700 border-gray-300 pb-6 sm:pb-8'>
       <div>
-        <p className='text-lg sm:text-3xl text-zinc-200 font-medium break-words'>{hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'}, {currentUser?.name}</p>
-        <h1 className='text-4xl sm:text-6xl font-bold mt-2'>My Trips</h1>
+        <p className='text-lg sm:text-3xl dark:text-zinc-200 text-gray-700 font-medium break-words'>{hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'}, {currentUser?.name}</p>
+        <h1 className='text-4xl sm:text-6xl font-bold mt-2 dark:text-white text-black'>My Trips</h1>
       </div>
 
       <div className='flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5'>
         <button
           onClick={() => dispatch(openCreateModal())}
-          className='w-full sm:w-auto px-5 sm:px-8 py-4 sm:py-5 rounded-2xl border-2 border-white text-lg sm:text-3xl font-semibold flex items-center justify-center gap-3 hover:bg-white hover:text-black transition'
+          className='w-full sm:w-auto px-5 sm:px-8 py-4 sm:py-5 rounded-2xl border-2 dark:border-white border-black dark:text-white text-black text-lg sm:text-3xl font-semibold flex items-center justify-center gap-3 dark:hover:bg-white hover:bg-black dark:hover:text-black hover:text-white transition'
         >
           <Plus size={24} />
           New Trip
@@ -46,7 +46,7 @@ export default function TripsHeader() {
           </div>
           <button
             onClick={handleLogout}
-            className='px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border-2 border-zinc-600 text-sm sm:text-xl font-semibold hover:bg-zinc-800 transition'
+            className='px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border-2 dark:border-zinc-600 border-gray-400 text-sm sm:text-xl font-semibold dark:text-white text-black dark:hover:bg-zinc-800 hover:bg-gray-200 transition'
           >
             Logout
           </button>

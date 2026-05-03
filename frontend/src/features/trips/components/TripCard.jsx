@@ -6,16 +6,16 @@ export default function TripCard({ trip }) {
   const memberCount = trip.members?.length || 0;
 
   return (
-    <div className='bg-zinc-800 rounded-3xl p-5 sm:p-8 border border-zinc-700 min-h-[290px] flex flex-col overflow-hidden'>
+    <div className='dark:bg-zinc-800 bg-white dark:border-zinc-700 border-gray-300 rounded-3xl p-5 sm:p-8 min-h-[290px] flex flex-col overflow-hidden'>
       <div className='flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between'>
         <div className='min-w-0'>
           <Link
             to={`/group-trips/${trip._id}`}
-            className='block text-2xl sm:text-4xl font-semibold leading-tight hover:underline focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded break-words'
+            className='block text-2xl sm:text-4xl font-semibold leading-tight hover:underline focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded break-words dark:text-white text-black'
           >
             {trip.title}
           </Link>
-          <p className='text-zinc-300 text-base sm:text-2xl mt-2 break-words'>{trip.date}</p>
+          <p className='dark:text-zinc-300 text-gray-600 text-base sm:text-2xl mt-2 break-words'>{trip.date}</p>
         </div>
 
         <span className={`self-start px-4 sm:px-5 py-2 rounded-xl text-sm sm:text-xl text-black ${trip.color}`}>{trip.status}</span>
@@ -27,16 +27,16 @@ export default function TripCard({ trip }) {
       </div>
 
       <div className='mt-auto'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-base sm:text-2xl text-zinc-300 mt-6 sm:mt-8'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-base sm:text-2xl dark:text-zinc-300 text-gray-600 mt-6 sm:mt-8'>
           <span className='break-words'>{formatMoney(trip.spent)} spent</span>
           <span className='break-words sm:text-right'>{formatMoney(trip.budget)} budget</span>
         </div>
 
-        <div className='h-4 rounded-full bg-zinc-900 mt-5 overflow-hidden'>
+        <div className='h-4 rounded-full dark:bg-zinc-900 bg-gray-200 mt-5 overflow-hidden'>
           <div className={`h-full ${trip.bar}`} style={{ width: `${pct}%` }} />
         </div>
 
-        <p className={`text-base sm:text-2xl mt-4 break-words ${trip.bar.includes('orange') ? 'text-orange-400' : 'text-zinc-200'}`}>{trip.text}</p>
+        <p className={`text-base sm:text-2xl mt-4 break-words ${trip.bar.includes('orange') ? 'text-orange-400' : 'dark:text-zinc-200 text-gray-700'}`}>{trip.text}</p>
       </div>
     </div>
   );

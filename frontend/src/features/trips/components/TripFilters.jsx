@@ -7,7 +7,7 @@ export default function TripFilters({ activeFilter, onFilterChange }) {
         <button
           key={key}
           onClick={() => onFilterChange(key)}
-          className={`px-4 sm:px-8 py-3 sm:py-4 rounded-2xl border text-sm sm:text-3xl ${activeFilter === key ? 'border-emerald-500 text-emerald-400' : 'border-white text-white'}`}
+          className={`px-4 sm:px-8 py-3 sm:py-4 rounded-2xl border text-sm sm:text-3xl ${activeFilter === key ? 'border-emerald-500 text-emerald-500' : 'dark:border-white border-black dark:text-white text-black'}`}
         >
           {label}
         </button>

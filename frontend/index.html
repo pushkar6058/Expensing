@@ -8,6 +8,16 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem('theme');
+        const mode = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const isDarkMode = mode === 'dark';
+
+        document.documentElement.classList.toggle('dark', isDarkMode);
+        document.documentElement.style.colorScheme = isDarkMode ? 'dark' : 'light';
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
